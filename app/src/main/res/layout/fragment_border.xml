@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <HorizontalScrollView
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorBlack">
+                <ImageView
+                    style="@style/BorderImageViewStyle"
+                    app:srcCompat="@drawable/img_border_grunge_sea"
+                    android:id="@+id/borderGrungeImageView"
+                    android:layout_toRightOf="@+id/borderGrunge2ImageView"
+                    android:layout_toEndOf="@+id/borderGrunge2ImageView" />
+                <ImageView
+                    style="@style/BorderImageViewStyle"
+                    app:srcCompat="@drawable/img_border_grunge2_sea"
+                    android:id="@+id/borderGrunge2ImageView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+                <ImageView
+                    style="@style/BorderImageViewStyle"
+                    app:srcCompat="@drawable/img_border_grunge3_sea"
+                    android:layout_toRightOf="@+id/borderGrungeImageView"
+                    android:layout_toEndOf="@+id/borderGrungeImageView"
+                    android:id="@+id/borderGrunge3ImageView" />
+                <ImageView
+                    style="@style/BorderImageViewStyle"
+                    app:srcCompat="@drawable/img_border_grunge4_sea"
+                    android:layout_toRightOf="@+id/borderGrunge3ImageView"
+                    android:layout_toEndOf="@+id/borderGrunge3ImageView"
+                    android:id="@+id/borderGrunge4ImageView" />
+                <ImageView
+                    style="@style/BorderImageViewStyle"
+                    app:srcCompat="@drawable/img_border_grunge5_sea"
+                    android:layout_toRightOf="@+id/borderGrunge4ImageView"
+                    android:layout_toEndOf="@+id/borderGrunge4ImageView"
+                    android:id="@+id/borderGrunge5ImageView" />
+            </RelativeLayout>
+        </HorizontalScrollView>
+    </RelativeLayout>
+</RelativeLayout>

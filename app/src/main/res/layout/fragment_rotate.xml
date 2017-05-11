@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:layout_gravity="bottom"
+        android:background="@color/colorBlack">
+        <ImageView
+            style="@style/RotateImageViewStyle"
+            app:srcCompat="@drawable/img_rotate_left"
+            android:id="@+id/rotateLeftImageView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <ImageView
+            style="@style/RotateImageViewStyle"
+            app:srcCompat="@drawable/img_rotate_right"
+            android:layout_toRightOf="@+id/rotateLeftImageView"
+            android:layout_toEndOf="@+id/rotateLeftImageView"
+            android:id="@+id/rotateRightImageView" />
+        <ImageView
+            style="@style/RotateImageViewStyle"
+            app:srcCompat="@drawable/img_rotate_180"
+            android:layout_toRightOf="@+id/rotateRightImageView"
+            android:layout_toEndOf="@+id/rotateRightImageView"
+            android:id="@+id/rotate180ImageView" />
+        <ImageView
+            style="@style/RotateImageViewStyle"
+            app:srcCompat="@drawable/img_rotate_vertical"
+            android:layout_toRightOf="@+id/rotate180ImageView"
+            android:layout_toEndOf="@+id/rotate180ImageView"
+            android:id="@+id/flipVerticalImageView" />
+        <ImageView
+            style="@style/RotateImageViewStyle"
+            app:srcCompat="@drawable/img_rotate_horizontal"
+            android:layout_toRightOf="@+id/flipVerticalImageView"
+            android:layout_toEndOf="@+id/flipVerticalImageView"
+            android:id="@+id/flipHorizontalImageView"/>
+    </RelativeLayout>
+</LinearLayout>

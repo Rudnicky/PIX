@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ProgressBar
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:indeterminate="true"
+                android:indeterminateTintMode="src_atop"
+                android:indeterminateTint="@color/colorSea"
+                android:id="@+id/progressBar" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="108dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorBlack">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        style="@style/OverlayImageViewStyle"
+                        android:id="@+id/img_grayscale"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true" />
+                    <ImageView
+                        style="@style/OverlayImageViewStyle"
+                        android:id="@+id/img_sepia"
+                        android:layout_below="@+id/img_grayscale"
+                        android:layout_alignLeft="@+id/img_grayscale"
+                        android:layout_alignStart="@+id/img_grayscale" />
+                    <ImageView
+                        style="@style/OverlayImageViewStyle"
+                        android:id="@+id/img_sketch"
+                        android:layout_below="@+id/img_sepia"
+                        android:layout_alignLeft="@+id/img_sepia"
+                        android:layout_alignStart="@+id/img_sepia" />
+                    <ImageView
+                        style="@style/OverlayImageViewStyle"
+                        android:layout_below="@+id/img_mono"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/img_vignette" />
+                    <ImageView
+                        style="@style/OverlayImageViewStyle"
+                        android:id="@+id/img_mono"
+                        android:layout_below="@+id/img_sketch"
+                        android:layout_alignLeft="@+id/img_sketch"
+                        android:layout_alignStart="@+id/img_sketch" />
+                    <ImageView
+                        style="@style/OverlayImageViewStyle"
+                        android:id="@+id/img_contrast"
+                        android:layout_below="@+id/img_vignette"
+                        android:layout_alignLeft="@+id/img_vignette"
+                        android:layout_alignStart="@+id/img_vignette" />
+                    <ImageView
+                        style="@style/OverlayImageViewStyle"
+                        android:id="@+id/img_invert"
+                        android:layout_below="@+id/img_contrast"
+                        android:layout_alignLeft="@+id/img_contrast"
+                        android:layout_alignStart="@+id/img_contrast"/>
+                    <ImageView
+                        style="@style/OverlayImageViewStyle"
+                        android:id="@+id/img_pixel"
+                        android:layout_below="@+id/img_invert"
+                        android:layout_alignLeft="@+id/img_invert"
+                        android:layout_alignStart="@+id/img_invert"/>
+                    <ImageView
+                        style="@style/OverlayImageViewStyle"
+                        android:id="@+id/img_kuwahara"
+                        android:layout_below="@+id/img_pixel"
+                        android:layout_alignLeft="@+id/img_pixel"
+                        android:layout_alignStart="@+id/img_pixel"/>
+                </RelativeLayout>
+            </ScrollView>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

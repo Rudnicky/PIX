@@ -1,0 +1,38 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/img_background</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+    <style name="BaseFragmentsImageView">
+        <item name="android:layout_width">@dimen/base_fragment_width_height</item>
+        <item name="android:layout_height">@dimen/base_fragment_width_height</item>
+    </style>
+    <style name="BorderImageViewStyle" parent="BaseFragmentsImageView">
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:layout_marginLeft">@dimen/margin_border_fragment</item>
+        <item name="android:layout_marginBottom">@dimen/margin_border_fragment</item>
+        <item name="android:layout_marginTop">@dimen/margin_border_fragment</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <style name="OverlayImageViewStyle" parent="BaseFragmentsImageView">
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+    <style name="ImageButtonStyle">
+        <item name="android:layout_width">220dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:background">@drawable/custom_button</item>
+    </style>
+    <style name="RotateImageViewStyle">
+        <item name="android:layout_width">@dimen/rotate_fragment_width_height</item>
+        <item name="android:layout_height">@dimen/rotate_fragment_width_height</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+</resources>

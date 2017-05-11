@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:layout_gravity="bottom"
+        android:background="@color/colorBlack">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/img_brightness"
+            android:id="@+id/brightnessImageView"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/img_saturation"
+            android:id="@+id/saturationImageView"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp" />
+
+        <SeekBar
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/brightnessImageView"
+            android:layout_toRightOf="@+id/saturationImageView"
+            android:progressBackgroundTint="@color/colorSea"
+            android:progressTint="@color/colorSea"
+            android:thumbTint="@color/colorSea"
+            android:id="@+id/brightnessBar" />
+
+        <SeekBar
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/saturationImageView"
+            android:layout_toRightOf="@+id/saturationImageView"
+            android:layout_toEndOf="@+id/saturationImageView"
+            android:progressBackgroundTint="@color/colorSea"
+            android:progressTint="@color/colorSea"
+            android:thumbTint="@color/colorSea"
+            android:id="@+id/saturationBar" />
+
+        <TextView
+            android:text="1.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorSea"
+            android:layout_alignTop="@+id/brightnessBar"
+            android:layout_toRightOf="@+id/brightnessBar"
+            android:layout_toEndOf="@+id/brightnessBar"
+            android:id="@+id/brightnessTextView" />
+
+        <TextView
+            android:text="1.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorSea"
+            android:layout_alignTop="@+id/saturationBar"
+            android:layout_toRightOf="@+id/saturationBar"
+            android:layout_toEndOf="@+id/saturationBar"
+            android:id="@+id/saturationTextView" />
+
+    </RelativeLayout>
+
+</LinearLayout>
