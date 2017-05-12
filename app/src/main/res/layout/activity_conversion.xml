@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorDarkGray"
-    tools:context="com.example.pawel.arakspix.activities.ConversionActivity">
+    tools:context="com.example.pawel.arakspix.activitie.ConversionActivity">
     <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,7 +32,7 @@
         app:tabIndicatorColor="@color/colorSea"
         app:tabIndicatorHeight="1dp"
         android:background="@color/colorBlack" />
-    <com.example.pawel.arakspix.controls.CustomViewPager
+    <com.example.pawel.arakspix.control.CustomViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

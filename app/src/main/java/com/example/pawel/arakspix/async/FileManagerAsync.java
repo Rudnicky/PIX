@@ -2,19 +2,15 @@ package com.example.pawel.arakspix.async;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.example.pawel.arakspix.conversions.GrayscaleConversion;
-import com.example.pawel.arakspix.conversions.MonochromeConversion;
-import com.example.pawel.arakspix.conversions.SepiaConversion;
-import com.example.pawel.arakspix.conversions.SettingsConversion;
+import com.example.pawel.arakspix.conversion.MonochromeConversion;
 import com.example.pawel.arakspix.interfaces.OnBitmapSavedEventListener;
-import com.example.pawel.arakspix.managers.BitmapDecodeManager;
-import com.example.pawel.arakspix.managers.FileManager;
-import com.example.pawel.arakspix.managers.PathManager;
+import com.example.pawel.arakspix.manager.BitmapDecodeManager;
+import com.example.pawel.arakspix.manager.FileManager;
+import com.example.pawel.arakspix.manager.PathManager;
 import com.squareup.picasso.Picasso;
 
 import jp.wasabeef.picasso.transformations.CropSquareTransformation;

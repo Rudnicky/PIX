@@ -1,15 +1,12 @@
 package com.example.pawel.arakspix.async;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.example.pawel.arakspix.activities.ConversionActivity;
-import com.example.pawel.arakspix.conversions.GrayscaleConversion;
 import com.example.pawel.arakspix.interfaces.OnBitmapTransformedEventListener;
-import com.example.pawel.arakspix.managers.PathManager;
+import com.example.pawel.arakspix.manager.PathManager;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -48,7 +45,13 @@ public class ProcessImageAsync extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... params) {
         try {
             if (mTransform == "gray") {
-                mPathManager.bitmap = Picasso.with(mContext).load(mPathManager.Uri).transform(new GrayscaleTransformation()).resize(1280, 720).onlyScaleDown().centerInside().get();
+                mPathManager.bitmap = Picasso.with(mContext)
+                        .load(mPathManager.Uri)
+                        .transform(new GrayscaleTransformation())
+                        .resize(1280, 720)
+                        .onlyScaleDown()
+                        .centerInside()
+                        .get();
             } else if (mTransform == "sepia") {
                 mPathManager.bitmap = Picasso.with(mContext).load(mPathManager.Uri).transform(new SepiaFilterTransformation(mContext)).resize(1280, 720).onlyScaleDown().centerInside().get();
             } else if (mTransform == "sketch") {

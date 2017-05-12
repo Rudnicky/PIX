@@ -4,11 +4,10 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.view.View;
 
-import com.example.pawel.arakspix.conversions.CombineBitmapsConversion;
+import com.example.pawel.arakspix.conversion.CombineBitmapsConversion;
 import com.example.pawel.arakspix.interfaces.OnBorderTransformedEventListener;
-import com.example.pawel.arakspix.managers.PathManager;
+import com.example.pawel.arakspix.manager.PathManager;
 
 
 public class ProcessBorderAsync extends AsyncTask<Void, Void, Void> {

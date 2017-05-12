@@ -14,7 +14,7 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activitie.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/SplashTheme"
             android:screenOrientation="portrait">
@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.ConversionActivity">
+            android:name=".activitie.ConversionActivity">
         </activity>
     </application>
 

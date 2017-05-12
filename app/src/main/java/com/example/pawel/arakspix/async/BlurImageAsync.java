@@ -5,12 +5,12 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 
 import com.davemorrissey.labs.subscaleview.ImageSource;
-import com.example.pawel.arakspix.managers.PathManager;
+import com.example.pawel.arakspix.manager.PathManager;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import jp.wasabeef.picasso.transformations.BlurTransformation;
-import static com.example.pawel.arakspix.activities.ConversionActivity.sImageView;
+import static com.example.pawel.arakspix.activitie.ConversionActivity.sImageView;
 
 
 public class BlurImageAsync extends AsyncTask<Void, Void, Void> {
