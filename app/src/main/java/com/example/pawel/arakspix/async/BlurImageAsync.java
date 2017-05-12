@@ -26,7 +26,9 @@ public class BlurImageAsync extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... params) {
         try {
-            Bitmap bluerredBitmap = Picasso.with(mContext).load(mPathManager.Uri).transform(new BlurTransformation(mContext)).get();
+            Bitmap bluerredBitmap = Picasso.with(mContext)
+                    .load(mPathManager.Uri)
+                    .transform(new BlurTransformation(mContext)).get();
             mBitmap = bluerredBitmap;
         } catch (IOException e) {
             e.printStackTrace();

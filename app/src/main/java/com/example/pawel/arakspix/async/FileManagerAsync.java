@@ -29,6 +29,7 @@ import jp.wasabeef.picasso.transformations.gpu.VignetteFilterTransformation;
 
 public class FileManagerAsync extends AsyncTask<Void, Void, Void>  {
 
+    //--------------------------------------------- VARIABLES ------------------------------------//
     private PathManager mPathManager = PathManager.getInstance();
     private OnBitmapSavedEventListener mListener;
     private BitmapDecodeManager mBitmapDecodeManager;
@@ -48,9 +49,11 @@ public class FileManagerAsync extends AsyncTask<Void, Void, Void>  {
     private Bitmap mInvertBitmap;
     private Bitmap mPixelBitmap;
     private Bitmap mKuwaharaBitmap;
+    //--------------------------------------------- VARIABLES ------------------------------------//
 
-    public FileManagerAsync(Bitmap bitmap, Context context, ProgressBar progressBar, OnBitmapSavedEventListener listener) {
-
+    //------------------------------------------------ CTOR --------------------------------------//
+    public FileManagerAsync(Bitmap bitmap, Context context,
+                            ProgressBar progressBar, OnBitmapSavedEventListener listener) {
         this.mBitmap = bitmap;
         this.mContext = context;
         this.mProgressBar = progressBar;
@@ -62,7 +65,9 @@ public class FileManagerAsync extends AsyncTask<Void, Void, Void>  {
 
         mResizedBitmap = mBitmapDecodeManager.resize(mBitmap, 250, 250);
     }
+    //------------------------------------------------ CTOR --------------------------------------//
 
+    //---------------------------------------- ASYNC METHODS -------------------------------------//
     @Override
     protected void onPreExecute() {
         mProgressBar.setVisibility(View.VISIBLE);
@@ -70,30 +75,45 @@ public class FileManagerAsync extends AsyncTask<Void, Void, Void>  {
 
     @Override
     protected Void doInBackground(Void... params) {
-
         convertBitmaps();
         return null;
     }
 
     @Override
     protected void onPostExecute(Void result) {
-
         mProgressBar.setVisibility(View.GONE);
         mListener.onSavedEvent();
     }
+    //---------------------------------------- ASYNC METHODS -------------------------------------//
 
+    //---------------------------------------------- METHODS  ------------------------------------//
     private void convertBitmaps() {
-
         try {
             mMonoBitmap = mMonochromeConversion.createBlackAndWhite(mResizedBitmap);
-            mGrayBitmap = Picasso.with(mContext).load(mPathManager.Uri).resize(200, 200).centerCrop().transform(new GrayscaleTransformation()).transform(new CropSquareTransformation()).get();
-            mSepiaBitmap = Picasso.with(mContext).load(mPathManager.Uri).resize(200, 200).centerCrop().transform(new SepiaFilterTransformation(mContext)).transform(new CropSquareTransformation()).get();
-            mSketchBitmap = Picasso.with(mContext).load(mPathManager.Uri).resize(200, 200).centerCrop().transform(new SketchFilterTransformation(mContext)).transform(new CropSquareTransformation()).get();
-            mVignetteBitmap = Picasso.with(mContext).load(mPathManager.Uri).resize(200, 200).centerCrop().transform(new VignetteFilterTransformation(mContext)).transform(new CropSquareTransformation()).get();
-            mContrastBitmap = Picasso.with(mContext).load(mPathManager.Uri).resize(200, 200).centerCrop().transform(new ContrastFilterTransformation(mContext)).transform(new CropSquareTransformation()).get();
-            mInvertBitmap = Picasso.with(mContext).load(mPathManager.Uri).resize(200, 200).centerCrop().transform(new InvertFilterTransformation(mContext)).transform(new CropSquareTransformation()).get();
-            mPixelBitmap = Picasso.with(mContext).load(mPathManager.Uri).resize(200, 200).centerCrop().transform(new PixelationFilterTransformation(mContext)).transform(new CropSquareTransformation()).get();
-            mKuwaharaBitmap = Picasso.with(mContext).load(mPathManager.Uri).resize(200, 200).centerCrop().transform(new KuwaharaFilterTransformation(mContext)).transform(new CropSquareTransformation()).get();
+            mGrayBitmap = Picasso.with(mContext).load(mPathManager.Uri).resize(200, 200)
+                    .centerCrop().transform(new GrayscaleTransformation())
+                    .transform(new CropSquareTransformation()).get();
+            mSepiaBitmap = Picasso.with(mContext).load(mPathManager.Uri).resize(200, 200)
+                    .centerCrop().transform(new SepiaFilterTransformation(mContext))
+                    .transform(new CropSquareTransformation()).get();
+            mSketchBitmap = Picasso.with(mContext).load(mPathManager.Uri).resize(200, 200)
+                    .centerCrop().transform(new SketchFilterTransformation(mContext))
+                    .transform(new CropSquareTransformation()).get();
+            mVignetteBitmap = Picasso.with(mContext).load(mPathManager.Uri).resize(200, 200)
+                    .centerCrop().transform(new VignetteFilterTransformation(mContext))
+                    .transform(new CropSquareTransformation()).get();
+            mContrastBitmap = Picasso.with(mContext).load(mPathManager.Uri).resize(200, 200)
+                    .centerCrop().transform(new ContrastFilterTransformation(mContext))
+                    .transform(new CropSquareTransformation()).get();
+            mInvertBitmap = Picasso.with(mContext).load(mPathManager.Uri).resize(200, 200)
+                    .centerCrop().transform(new InvertFilterTransformation(mContext))
+                    .transform(new CropSquareTransformation()).get();
+            mPixelBitmap = Picasso.with(mContext).load(mPathManager.Uri).resize(200, 200)
+                    .centerCrop().transform(new PixelationFilterTransformation(mContext))
+                    .transform(new CropSquareTransformation()).get();
+            mKuwaharaBitmap = Picasso.with(mContext).load(mPathManager.Uri).resize(200, 200)
+                    .centerCrop().transform(new KuwaharaFilterTransformation(mContext))
+                    .transform(new CropSquareTransformation()).get();
         }  catch (Exception e) {
             e.printStackTrace();
         }
@@ -107,4 +127,5 @@ public class FileManagerAsync extends AsyncTask<Void, Void, Void>  {
         mFileManager.saveImage(mPixelBitmap, mContext, "pixel");
         mFileManager.saveImage(mKuwaharaBitmap, mContext, "kuwahara");
     }
+    //---------------------------------------------- METHODS  ------------------------------------//
 }

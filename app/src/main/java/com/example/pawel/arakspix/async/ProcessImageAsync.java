@@ -1,6 +1,7 @@
 package com.example.pawel.arakspix.async;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -23,19 +24,25 @@ import jp.wasabeef.picasso.transformations.gpu.VignetteFilterTransformation;
 
 public class ProcessImageAsync extends AsyncTask<Void, Void, Void> {
 
+    //--------------------------------------------- VARIABLES ------------------------------------//
     private PathManager mPathManager = PathManager.getInstance();
     private String mTransform;
     private Context mContext;
     private ProgressBar mProgressBar;
     private OnBitmapTransformedEventListener mListener;
+    //--------------------------------------------- VARIABLES ------------------------------------//
 
-    public ProcessImageAsync(Context context, String transform, ProgressBar progressBar, OnBitmapTransformedEventListener listener) {
+    //------------------------------------------------ CTOR --------------------------------------//
+    public ProcessImageAsync(Context context, String transform, ProgressBar progressBar,
+                             OnBitmapTransformedEventListener listener) {
         this.mContext = context;
         this.mTransform = transform;
         this.mProgressBar = progressBar;
         this.mListener = listener;
     }
+    //------------------------------------------------ CTOR --------------------------------------//
 
+    //---------------------------------------- ASYNC METHODS -------------------------------------//
     @Override
     protected void onPreExecute() {
         mProgressBar.setVisibility(View.VISIBLE);
@@ -53,19 +60,33 @@ public class ProcessImageAsync extends AsyncTask<Void, Void, Void> {
                         .centerInside()
                         .get();
             } else if (mTransform == "sepia") {
-                mPathManager.bitmap = Picasso.with(mContext).load(mPathManager.Uri).transform(new SepiaFilterTransformation(mContext)).resize(1280, 720).onlyScaleDown().centerInside().get();
+                mPathManager.bitmap = Picasso.with(mContext).load(mPathManager.Uri)
+                        .transform(new SepiaFilterTransformation(mContext))
+                        .resize(1280, 720).onlyScaleDown().centerInside().get();
             } else if (mTransform == "sketch") {
-                mPathManager.bitmap = Picasso.with(mContext).load(mPathManager.Uri).transform(new SketchFilterTransformation(mContext)).resize(1280, 720).onlyScaleDown().centerInside().get();
+                mPathManager.bitmap = Picasso.with(mContext).load(mPathManager.Uri)
+                        .transform(new SketchFilterTransformation(mContext))
+                        .resize(1280, 720).onlyScaleDown().centerInside().get();
             } else if (mTransform == "invert") {
-                mPathManager.bitmap = Picasso.with(mContext).load(mPathManager.Uri).transform(new InvertFilterTransformation(mContext)).resize(1280, 720).onlyScaleDown().centerInside().get();
+                mPathManager.bitmap = Picasso.with(mContext).load(mPathManager.Uri)
+                        .transform(new InvertFilterTransformation(mContext))
+                        .resize(1280, 720).onlyScaleDown().centerInside().get();
             } else if (mTransform == "kuwahara") {
-                mPathManager.bitmap = Picasso.with(mContext).load(mPathManager.Uri).transform(new KuwaharaFilterTransformation(mContext)).resize(1280, 720).onlyScaleDown().centerInside().get();
+                mPathManager.bitmap = Picasso.with(mContext).load(mPathManager.Uri)
+                        .transform(new KuwaharaFilterTransformation(mContext))
+                        .resize(1280, 720).onlyScaleDown().centerInside().get();
             } else if (mTransform == "pixel") {
-                mPathManager.bitmap = Picasso.with(mContext).load(mPathManager.Uri).transform(new PixelationFilterTransformation(mContext)).resize(1280, 720).onlyScaleDown().centerInside().get();
+                mPathManager.bitmap = Picasso.with(mContext).load(mPathManager.Uri)
+                        .transform(new PixelationFilterTransformation(mContext))
+                        .resize(1280, 720).onlyScaleDown().centerInside().get();
             } else if (mTransform == "contrast") {
-                mPathManager.bitmap = Picasso.with(mContext).load(mPathManager.Uri).transform(new ContrastFilterTransformation(mContext)).resize(1280, 720).onlyScaleDown().centerInside().get();
+                mPathManager.bitmap = Picasso.with(mContext).load(mPathManager.Uri)
+                        .transform(new ContrastFilterTransformation(mContext))
+                        .resize(1280, 720).onlyScaleDown().centerInside().get();
             } else if (mTransform == "vignette") {
-                mPathManager.bitmap = Picasso.with(mContext).load(mPathManager.Uri).transform(new VignetteFilterTransformation(mContext)).resize(1280, 720).onlyScaleDown().centerInside().get();
+                mPathManager.bitmap = Picasso.with(mContext).load(mPathManager.Uri)
+                        .transform(new VignetteFilterTransformation(mContext))
+                        .resize(1280, 720).onlyScaleDown().centerInside().get();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -78,4 +99,5 @@ public class ProcessImageAsync extends AsyncTask<Void, Void, Void> {
         mListener.onTransformed();
         mProgressBar.setVisibility(View.GONE);
     }
+    //---------------------------------------- ASYNC METHODS -------------------------------------//
 }
