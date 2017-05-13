@@ -28,7 +28,6 @@ public class FileManager {
     }
 
     public void saveImageInternal(Bitmap bitmap, Context context, String name) {
-
         ContextWrapper contextWrapper = new ContextWrapper(context);
         File directory = contextWrapper.getDir("arakjelImages", Context.MODE_PRIVATE);
         File myPath = new File(directory, name + "jpg");
@@ -44,7 +43,6 @@ public class FileManager {
     }
 
     public Bitmap loadImageInternal(String path, String name) {
-
         try {
             File file = new File(path, name + "jpg");
             Bitmap bitmap = BitmapFactory.decodeStream(new FileInputStream(file));
@@ -56,7 +54,6 @@ public class FileManager {
     }
 
     public void saveImage(Bitmap bitmap, Context context, String name) {
-
         FileOutputStream fileOutputStream;
         try {
             fileOutputStream = context.openFileOutput(name, Context.MODE_PRIVATE);
@@ -68,7 +65,6 @@ public class FileManager {
     }
 
     public Bitmap loadImage(Context context,  String name) {
-
         Bitmap bitmap = null;
         FileInputStream fileInputStream;
         try {
@@ -86,7 +82,6 @@ public class FileManager {
     }
 
     public String getRealPathFromURI(Context context, Uri contentURI) {
-
         String result;
         Cursor cursor = context.getContentResolver().query(contentURI, null, null, null, null);
         if (cursor == null) {
@@ -101,7 +96,6 @@ public class FileManager {
     }
 
     public Uri getUri(Context context, Bitmap bitmap) {
-
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Title", null);
