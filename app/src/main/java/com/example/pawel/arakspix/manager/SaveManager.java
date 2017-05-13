@@ -51,7 +51,7 @@ public class SaveManager {
         }
         String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
         File mediaFile;
-        mImageName="PIX["+ timeStamp +"].jpg";
+        mImageName="PIX["+ timeStamp +"]";
         mediaFile = new File(mediaStorageDir.getPath() + File.separator + mImageName);
         return mediaFile;
     }

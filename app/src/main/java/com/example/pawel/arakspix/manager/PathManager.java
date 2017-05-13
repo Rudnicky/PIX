@@ -17,12 +17,10 @@ public class PathManager {
     public String path;
     public static Bitmap bitmap;
     public static Bitmap borderBitmap;
-    public Bitmap settingsBitmap;
-    public boolean isFileLoaded;
-    public boolean isProcessing;
     public boolean isBorderApplyed;
     public boolean isSettingsApplyed;
     public boolean isRotationApplyed;
+    public boolean isImageSaved;
 
     private PathManager() {
         Log.i(TAG, "PathMAnager() - created");
