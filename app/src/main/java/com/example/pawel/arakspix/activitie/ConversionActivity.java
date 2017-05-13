@@ -126,6 +126,44 @@ public class ConversionActivity extends AppCompatActivity implements OnBitmapSav
             startActivityForResult(galleryIntent, REQUEST_IMAGE_CAPTURE);
         }
     }
+
+    void saveResizableBitmapAndMoveForward() {
+        if (mPathManager.isBorderApplyed) {
+            if (mPathManager.borderBitmap != null && !mPathManager.borderBitmap.isRecycled()) {
+                mPathManager.bitmap = mPathManager.borderBitmap;
+                if (mPathManager.bitmap != null && !mPathManager.bitmap.isRecycled()) {
+                    Bitmap tmp = mPathManager.bitmap.copy(mPathManager.bitmap.getConfig(), mPathManager.bitmap.isMutable());
+                    sImageView.setImage(ImageSource.bitmap(tmp));
+                } else {
+                    Log.i(TAG, "bitmap's recycled ( DEFAULT )");
+                }
+            } else {
+                Log.i(TAG, "bordered bitmap's recycled ( DEFAULT )");
+            }
+            mPathManager.isBorderApplyed = false;
+        }
+
+        if (mPathManager.isSettingsApplyed) {
+            if (mPathManager.bitmap != null && !mPathManager.bitmap.isRecycled()) {
+                Bitmap tmp = mPathManager.bitmap.copy(mPathManager.bitmap.getConfig(), mPathManager.bitmap.isMutable());
+                sImageView.setImage(ImageSource.bitmap(tmp));
+            }
+            mPathManager.isSettingsApplyed = false;
+        }
+        setVisibilityOfImageViews(false);
+    }
+
+    void saveBitmapAndMoveForward() {
+        if (mPathManager.isBorderApplyed) {
+            if (mPathManager.borderBitmap != null && !mPathManager.borderBitmap.isRecycled()) {
+                mPathManager.bitmap = mPathManager.borderBitmap;
+                mPathManager.isBorderApplyed = false;
+            }
+        }
+        Bitmap tmp = mPathManager.bitmap.copy(mPathManager.bitmap.getConfig(), mPathManager.bitmap.isMutable());
+        sImageViewSettings.setImageBitmap(tmp);
+        setVisibilityOfImageViews(true);
+    }
     //----------------------------------------------- METHODS ------------------------------------//
 
     //------------------------------------------------ EVENTS ------------------------------------//
@@ -135,157 +173,23 @@ public class ConversionActivity extends AppCompatActivity implements OnBitmapSav
             public void onTabSelected(TabLayout.Tab tab) {
                 switch (tab.getPosition()) {
                     case TabEnum.DEFAULT:
-                    {
-                        if (mPathManager.isBorderApplyed) {
-                            if (mPathManager.borderBitmap != null && !mPathManager.borderBitmap.isRecycled()) {
-                                mPathManager.bitmap = mPathManager.borderBitmap;
-                                if (mPathManager.bitmap != null && !mPathManager.bitmap.isRecycled()) {
-                                    Bitmap tmp = mPathManager.bitmap.copy(mPathManager.bitmap.getConfig(), mPathManager.bitmap.isMutable());
-                                    sImageView.setImage(ImageSource.bitmap(tmp));
-                                } else {
-                                    Log.i(TAG, "bitmap's recycled ( DEFAULT )");
-                                }
-                            } else {
-                                Log.i(TAG, "bordered bitmap's recycled ( DEFAULT )");
-                            }
-                            mPathManager.isBorderApplyed = false;
-                        }
-
-                        if (mPathManager.isSettingsApplyed) {
-                            if (mPathManager.bitmap != null && !mPathManager.bitmap.isRecycled()) {
-                                Bitmap tmp = mPathManager.bitmap.copy(mPathManager.bitmap.getConfig(), mPathManager.bitmap.isMutable());
-                                sImageView.setImage(ImageSource.bitmap(tmp));
-                            }
-                            mPathManager.isSettingsApplyed = false;
-                        }
-                        setVisibilityOfImageViews(false);
-                    }
-                    break;
+                        saveResizableBitmapAndMoveForward();
+                        break;
                     case TabEnum.OVERLAY:
-                    {
-                        if (mPathManager.isBorderApplyed) {
-                            if (mPathManager.borderBitmap != null && !mPathManager.borderBitmap.isRecycled()) {
-                                mPathManager.bitmap = mPathManager.borderBitmap;
-                                if (mPathManager.bitmap != null && !mPathManager.bitmap.isRecycled()) {
-                                    Bitmap tmp = mPathManager.bitmap.copy(mPathManager.bitmap.getConfig(), mPathManager.bitmap.isMutable());
-                                    sImageView.setImage(ImageSource.bitmap(tmp));
-                                } else {
-                                    Log.i(TAG, "bitmap's recycled ( DEFAULT )");
-                                }
-                            } else {
-                                Log.i(TAG, "bordered bitmap's recycled ( DEFAULT )");
-                            }
-                            mPathManager.isBorderApplyed = false;
-                        }
-
-                        if (mPathManager.isSettingsApplyed) {
-                            if (mPathManager.bitmap != null && !mPathManager.bitmap.isRecycled()) {
-                                Bitmap tmp = mPathManager.bitmap.copy(mPathManager.bitmap.getConfig(), mPathManager.bitmap.isMutable());
-                                sImageView.setImage(ImageSource.bitmap(tmp));
-                            }
-                            mPathManager.isSettingsApplyed = false;
-                        }
-                        setVisibilityOfImageViews(false);
-                    }
-                    break;
+                        saveResizableBitmapAndMoveForward();
+                        break;
                     case TabEnum.BORDER:
-                    {
-                        if (mPathManager.isBorderApplyed) {
-                            if (mPathManager.borderBitmap != null && !mPathManager.borderBitmap.isRecycled()) {
-                                mPathManager.bitmap = mPathManager.borderBitmap;
-                            }
-                        }
-                        Bitmap tmp = mPathManager.bitmap.copy(mPathManager.bitmap.getConfig(), mPathManager.bitmap.isMutable());
-                        sImageViewSettings.setImageBitmap(tmp);
-                        setVisibilityOfImageViews(true);
-                    }
-                    break;
+                        saveBitmapAndMoveForward();
+                        break;
                     case TabEnum.SETTINGS:
-                    {
-                        if (mPathManager.isBorderApplyed) {
-                            if (mPathManager.borderBitmap != null && !mPathManager.borderBitmap.isRecycled()) {
-                                mPathManager.bitmap = mPathManager.borderBitmap;
-                                mPathManager.isBorderApplyed = false;
-                            }
-                        }
-                        Bitmap tmp = mPathManager.bitmap.copy(mPathManager.bitmap.getConfig(), mPathManager.bitmap.isMutable());
-                        sImageViewSettings.setImageBitmap(tmp);
-                        setVisibilityOfImageViews(true);
-                    }
-                    break;
+                        saveBitmapAndMoveForward();
+                        break;
                     case TabEnum.ROTATE:
-                    {
-                        if (mPathManager.isBorderApplyed) {
-                            if (mPathManager.borderBitmap != null && !mPathManager.borderBitmap.isRecycled()) {
-                                mPathManager.bitmap = mPathManager.borderBitmap;
-                                if (mPathManager.bitmap != null && !mPathManager.bitmap.isRecycled()) {
-                                    Bitmap tmp = mPathManager.bitmap.copy(mPathManager.bitmap.getConfig(), mPathManager.bitmap.isMutable());
-                                    sImageView.setImage(ImageSource.bitmap(tmp));
-                                } else {
-                                    Log.i(TAG, "bitmap's recycled ( DEFAULT )");
-                                }
-                            } else {
-                                Log.i(TAG, "bordered bitmap's recycled ( DEFAULT )");
-                            }
-                        } else if (mPathManager.isSettingsApplyed) {
-                            mPathManager.isSettingsApplyed = false;
-                            if (mPathManager.borderBitmap != null && !mPathManager.borderBitmap.isRecycled()) {
-                                if (mPathManager.bitmap != null && !mPathManager.bitmap.isRecycled()) {
-                                    Bitmap tmp = mPathManager.bitmap.copy(mPathManager.bitmap.getConfig(), mPathManager.bitmap.isMutable());
-                                    sImageView.setImage(ImageSource.bitmap(tmp));
-                                } else {
-                                    Log.i(TAG, "bitmap's recycled ( DEFAULT )");
-                                }
-                            } else {
-                                Log.i(TAG, "bordered bitmap's recycled ( DEFAULT )");
-                            }
-                        }
-                        setVisibilityOfImageViews(false);
-                    }
-                    break;
+                        saveResizableBitmapAndMoveForward();
+                        break;
                     case TabEnum.SAVE:
-                    {
-                        if (mPathManager.isBorderApplyed) {
-                            if (mPathManager.borderBitmap != null && !mPathManager.borderBitmap.isRecycled()) {
-                                mPathManager.bitmap = mPathManager.borderBitmap;
-                                if (mPathManager.bitmap != null && !mPathManager.bitmap.isRecycled()) {
-                                    Bitmap tmp = mPathManager.bitmap.copy(mPathManager.bitmap.getConfig(), mPathManager.bitmap.isMutable());
-                                    sImageView.setImage(ImageSource.bitmap(tmp));
-                                } else {
-                                    Log.i(TAG, "bitmap's recycled ( DEFAULT )");
-                                }
-                            } else {
-                                Log.i(TAG, "bordered bitmap's recycled ( DEFAULT )");
-                            }
-                        } else if (mPathManager.isSettingsApplyed) {
-                            mPathManager.isSettingsApplyed = false;
-                            if (mPathManager.borderBitmap != null && !mPathManager.borderBitmap.isRecycled()) {
-                                if (mPathManager.bitmap != null && !mPathManager.bitmap.isRecycled()) {
-                                    Bitmap tmp = mPathManager.bitmap.copy(mPathManager.bitmap.getConfig(), mPathManager.bitmap.isMutable());
-                                    sImageView.setImage(ImageSource.bitmap(tmp));
-                                } else {
-                                    Log.i(TAG, "bitmap's recycled ( DEFAULT )");
-                                }
-                            } else {
-                                Log.i(TAG, "bordered bitmap's recycled ( DEFAULT )");
-                            }
-                        }
-//                        else if (mPathManager.isRotationApplyed) {
-//                            mPathManager.isRotationApplyed = false;
-//                            if (mPathManager.borderBitmap != null && !mPathManager.borderBitmap.isRecycled()) {
-//                                if (mPathManager.bitmap != null && !mPathManager.bitmap.isRecycled()) {
-//                                    Bitmap tmp3 = mPathManager.bitmap.copy(mPathManager.bitmap.getConfig(), mPathManager.bitmap.isMutable());
-//                                    sImageView.setImage(ImageSource.bitmap(tmp3));
-//                                } else {
-//                                    Log.i(TAG, "bitmap's recycled ( DEFAULT )");
-//                                }
-//                            } else {
-//                                Log.i(TAG, "bordered bitmap's recycled ( DEFAULT )");
-//                            }
-//                        }
-                        setVisibilityOfImageViews(false);
-                    }
-                    break;
+                        saveResizableBitmapAndMoveForward();
+                        break;
                 }
             }
 
